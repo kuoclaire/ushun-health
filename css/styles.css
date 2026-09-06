@@ -105,7 +105,7 @@ p {
 /* Traditional Chinese Frame Box Component (using decor_top and decor_bottom) */
 .frame-decor-box {
   position: relative;
-  border: 2px solid var(--color-accent);;
+  border: 2px solid var(--color-accent);
   background-color: rgba(244, 239, 230, 0.5);
   margin: 2.5rem auto;
   max-width: 960px;
@@ -133,7 +133,7 @@ p {
 
 .about-label {
   font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.15em;
   color: var(--color-accent);
   margin-bottom: 0.5rem;
   display: block;
@@ -153,8 +153,7 @@ p {
 /* Traditional Corner Accents for Service Cards */
 .traditional-frame {
   position: relative;
-  border-left: 2px solid var(--color-accent);
-  border-right: 2px solid var(--color-accent);
+  border: 2px solid var(--color-accent);
   background-color: rgba(244, 239, 230, 0.5);
   margin: 0;
   display: flex;
@@ -195,7 +194,7 @@ p {
 .btn-outline {
   background-color: transparent;
   color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  border: 2px solid var(--color-accent);
 }
 
 .btn-outline:hover {
@@ -233,9 +232,8 @@ p {
 .logo-img {
   width: 44px;
   height: 44px;
-   border-radius: 50%;
+  border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--color-accent);
 }
 
 .nav-links {
@@ -412,7 +410,7 @@ p {
 }
 
 .practitioner-info h2 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   margin-bottom: 0.4rem;
 }
 
@@ -447,13 +445,13 @@ p {
 .mission-section {
   background-color: var(--color-accent);
   color: #ECE7DC;
-  padding: 5rem 0 0 0;
+  padding: 5rem 0 4rem 0;
   text-align: center;
 }
 
 .mission-content {
   max-width: 860px;
-  margin: 0 auto 4rem auto;
+  margin: 0 auto;
   padding: 0 1.5rem;
 }
 
@@ -469,11 +467,230 @@ p {
   line-height: 1.8;
 }
 
+/* Community Recognition Section (#F4EFE6 Background) */
+.community-recognition-section {
+  background-color: #F4EFE6;
+  padding: 5rem 0;
+  text-align: center;
+  border-top: 1px solid rgba(4, 38, 86, 0.1);
+  border-bottom: 1px solid rgba(4, 38, 86, 0.1);
+}
+
+.recognition-header {
+  max-width: 800px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.recognition-header h2 {
+  color: #042656;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.recognition-subtitle {
+  color: #042656;
+  font-size: 1.15rem;
+  font-family: var(--font-body);
+}
+
+/* Certificate Grid Layout */
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  text-align: left;
+  align-items: start;
+}
+
+.certificate-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Equal Dimension Image Container */
+.certificate-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.35 / 1; /* Guarantees 100% equal width & height on desktop/tablet */
+  background-color: #FFFFFF;
+  border: 1px solid rgba(4, 38, 86, 0.2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(4, 38, 86, 0.06);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  outline: none;
+}
+
+.certificate-image-wrapper:hover,
+.certificate-image-wrapper:focus-visible {
+  transform: translateY(-4px);
+}
+
+.certificate-image-wrapper:focus-visible {
+  outline: 2px solid #042656;
+  outline-offset: 3px;
+}
+
+.certificate-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Certificate Captions - Perfectly Aligned Vertical Baseline */
+.certificate-caption {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.caption-title {
+  font-family: var(--font-header);
+  font-size: 1.35rem;
+  color: #070D1F;
+  margin-bottom: 0.35rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.caption-presenter {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #070D1F;
+  margin-bottom: 0.75rem;
+}
+
+.caption-description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #070D1F;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+.caption-date {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #3B475B;
+  opacity: 0.8;
+}
+
+/* Mission Banner Wrapper */
+.mission-banner-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .mission-banner-img {
   width: 100%;
   max-height: 520px;
   object-fit: cover;
   display: block;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 13, 31, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-container {
+  position: relative;
+  z-index: 3001;
+  max-width: 920px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  font-size: 2.4rem;
+  color: #ECE7DC;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  color: #FFFFFF;
+}
+
+.lightbox-content-box {
+  background-color: var(--bg-lb);
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem;
+  overflow-y: auto;
+  max-height: 85vh;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  text-align: left;
+}
+
+.lightbox-image {
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(4, 38, 86, 0.15);
+}
+
+.lightbox-caption-text .caption-title {
+  color: var(--color-accent);
+  font-size: 1.4rem;
+}
+
+.lightbox-caption-text .caption-presenter {
+  color: var(--color-text);
+  font-size: 1.05rem;
+}
+
+.lightbox-caption-text .caption-description {
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.lightbox-caption-text .caption-date {
+  color: var(--color-text-muted);
 }
 
 /* Services & Specializations Section */
@@ -542,6 +759,7 @@ p {
   margin: 0 auto 3rem auto;
   border-radius: var(--radius-md);
   overflow: hidden;
+  background-color: #FFFFFF;
 }
 
 .plan-graphic-img {
@@ -728,6 +946,16 @@ p {
   .specializations-grid {
     grid-template-columns: 1fr;
   }
+  .community-recognition-section {
+    padding: 3.5rem 0;
+  }
+  .certificate-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .certificate-image-wrapper {
+    aspect-ratio: 1.35 / 1;
+  }
   .button-group {
     flex-direction: column;
     width: 100%;
@@ -740,6 +968,12 @@ p {
   }
   .frame-decor-content h2 {
     font-size: 1.8rem;
+  }
+  .recognition-header h2 {
+    font-size: 2rem;
+  }
+  .caption-title {
+    font-size: 1.2rem;
   }
 
   /* Map Responsive Height & Width for Mobile */

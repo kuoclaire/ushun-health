@@ -30,6 +30,69 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeDrawer);
   });
 
+  // Certificate Lightbox Handling
+  const certificateWrappers = document.querySelectorAll('.certificate-image-wrapper');
+  const lightboxModal = document.getElementById('certificateLightbox');
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaptionContent = document.getElementById('lightboxCaptionContent');
+
+  let activeTriggerElement = null;
+
+  function openLightbox(wrapper) {
+    activeTriggerElement = wrapper;
+    const imgElement = wrapper.querySelector('.certificate-img');
+    const captionElement = wrapper.parentElement.querySelector('.certificate-caption');
+
+    if (imgElement && lightboxImg) {
+      lightboxImg.src = imgElement.src;
+      lightboxImg.alt = imgElement.alt;
+    }
+
+    if (captionElement && lightboxCaptionContent) {
+      lightboxCaptionContent.innerHTML = captionElement.innerHTML;
+    }
+
+    if (lightboxModal) {
+      lightboxModal.classList.add('active');
+      lightboxModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (lightboxClose) lightboxClose.focus();
+    }
+  }
+
+  function closeLightbox() {
+    if (lightboxModal) {
+      lightboxModal.classList.remove('active');
+      lightboxModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (activeTriggerElement) {
+        activeTriggerElement.focus();
+        activeTriggerElement = null;
+      }
+    }
+  }
+
+  certificateWrappers.forEach(wrapper => {
+    wrapper.addEventListener('click', () => openLightbox(wrapper));
+    wrapper.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(wrapper);
+      }
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+
   // Personalized Treatment Plan Animated GIF on Hover / Section Scroll
   const planGraphicImg = document.getElementById('planGraphicImg');
   const planGraphicSection = document.getElementById('planGraphicSection');
